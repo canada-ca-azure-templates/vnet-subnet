@@ -22,7 +22,7 @@
                 {
                     "name": "routes",
                     "location": "canadacentral",
-                    "templateLink": "https://raw.githubusercontent.com/canada-ca/accelerators_accelerateurs-azure/master/Templates/arm/routes/20190506.1/azuredeploysub.json",
+                    "templateLink": "https://raw.githubusercontent.com/canada-ca-azure-templates/routes/20190506/template/azuredeploysub.json",
                     "parametersFile": "https://raw.githubusercontent.com/canada-ca-azure-templates/vnet-subnet/dev/test/parameters/dependancy-routes.parameters.json",
                     "dependsOn": [
                         "resourcegroups"
