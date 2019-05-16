@@ -1,7 +1,15 @@
+# Manually running validation
+
 Manual execution of validation does like this:
 
-..\..\..\Core\deployments\scripts\manual-copy.ps1 -templateLibrarySrc ..\template\ -templateLibraryDst vnet-subnet/bernard-dev -storageRG PwS2-Infra-Storage-RG -storageAccountName azpwsdeploytpnjitlh3orvq -containerName library-dev
+Commit updates to dev branch then run:
 
-then
+```powershell
+.\validate.ps1
+```
 
-.\validate.ps1 -templateLibraryName vnet-subnet -templateLibraryVersion bernard-dev
+If you want to keep the resources created during the validation to inspect them of troubleshoot issues run the validation with the following command:
+
+```powershell
+.\validate.ps1 -doNotCleanup
+```
