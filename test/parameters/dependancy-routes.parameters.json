@@ -6,6 +6,7 @@
             "value": [
                 {
                     "name": "test1-RT",
+                    "resourceGroup": "PwS2-validate-vnet-subnet-RG",
                     "properties": {
                         "disableBgpRoutePropagation": false,
                         "routes": [
