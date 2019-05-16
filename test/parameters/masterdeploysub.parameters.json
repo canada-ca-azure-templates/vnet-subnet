@@ -1,0 +1,34 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "deploymentSubArray": {
+            "value": [
+                {
+                    "name": "resourcegroups",
+                    "location": "canadacentral",
+                    "templateLink": "https://raw.githubusercontent.com/canada-ca-azure-templates/resourcegroups/20190514/template/azuredeploysub.json",
+                    "parametersFile": "https://raw.githubusercontent.com/canada-ca-azure-templates/servers/dev/test/parameters/dependancy-resourcegroups-canadacentral.parameters.json"
+                },
+                {
+                    "name": "nsg",
+                    "location": "canadacentral",
+                    "templateLink": "https://raw.githubusercontent.com/canada-ca-azure-templates/nsg/20190502/template/azuredeploysub.json",
+                    "parametersFile": "https://raw.githubusercontent.com/canada-ca-azure-templates/servers/dev/test/parameters/dependancy-nsg.parameters.json",
+                    "dependsOn": [
+                        "resourcegroups"
+                    ]
+                },
+                {
+                    "name": "routes",
+                    "location": "canadacentral",
+                    "templateLink": "https://raw.githubusercontent.com/canada-ca/accelerators_accelerateurs-azure/master/Templates/arm/routes/20190506.1/azuredeploysub.json",
+                    "parametersFile": "https://raw.githubusercontent.com/canada-ca-azure-templates/servers/dev/test/parameters/dependancy-routes.parameters.json",
+                    "dependsOn": [
+                        "resourcegroups"
+                    ]
+                }
+            ]
+        }
+    }
+}
