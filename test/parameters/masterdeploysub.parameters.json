@@ -5,27 +5,27 @@
         "deploymentSubArray": {
             "value": [
                 {
-                    "name": "resourcegroups",
+                    "name": "resourcegroups-vnet-subnet",
                     "location": "canadacentral",
                     "templateLink": "https://raw.githubusercontent.com/canada-ca-azure-templates/resourcegroups/20190514/template/azuredeploysub.json",
                     "parametersFile": "dependancy-resourcegroups-canadacentral.parameters.json"
                 },
                 {
-                    "name": "nsg",
+                    "name": "nsg-vnet-subnet",
                     "location": "canadacentral",
                     "templateLink": "https://raw.githubusercontent.com/canada-ca-azure-templates/nsg/20190502/template/azuredeploysub.json",
                     "parametersFile": "dependancy-nsg.parameters.json",
                     "dependsOn": [
-                        "resourcegroups"
+                        "resourcegroups-vnet-subnet"
                     ]
                 },
                 {
-                    "name": "routes",
+                    "name": "routes-vnet-subnet",
                     "location": "canadacentral",
                     "templateLink": "https://raw.githubusercontent.com/canada-ca-azure-templates/routes/20190506/template/azuredeploysub.json",
                     "parametersFile": "dependancy-routes.parameters.json",
                     "dependsOn": [
-                        "resourcegroups"
+                        "resourcegroups-vnet-subnet"
                     ]
                 }
             ]
