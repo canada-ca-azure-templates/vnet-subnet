@@ -21,6 +21,7 @@
                             "name": "test1",
                             "properties": {
                                 "addressPrefix": "10.96.96.0/25",
+                                "networkSecurityGroupResourceGroupName": "myTest",
                                 "networkSecurityGroupName": "networkSecurityGroups_TestShared_name"
                             }
                         }

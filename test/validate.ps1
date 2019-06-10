@@ -93,7 +93,7 @@ if (-not $doNotDeployPreReq) {
                 Write-Host "Cleanup old $templateLibraryName template validation resources..."
                 
                 Get-AzureRmResourceLock -ResourceGroupName PwS2-validate-$templateLibraryName-RG | Remove-AzureRmResourceLock -Verbose -Force
-                Remove-AzureRmResourceGroup -Name PwS2-validate-$templateLibraryName-RG -Verbose -Force
+                $success = Remove-AzureRmResourceGroup -Name PwS2-validate-$templateLibraryName-RG -Verbose -Force
             }
         }
 

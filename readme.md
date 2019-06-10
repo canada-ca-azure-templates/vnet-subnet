@@ -35,6 +35,7 @@ This template is used to deploy [virtual networks](https://docs.microsoft.com/en
                             "name": "test2",
                             "properties": {
                                 "addressPrefix": "10.96.96.64/26",
+                                "networkSecurityGroupResourceGroupName": "someOtherRG",
                                 "networkSecurityGroupName": "test1-NSG"
                             }
                         }
@@ -90,11 +91,12 @@ This template is used to deploy [virtual networks](https://docs.microsoft.com/en
 
 ### Subet Properties Format Object
 
-| Name                     | Type   | Required | Value                                        |
-| ------------------------ | ------ | -------- | -------------------------------------------- |
-| addressPrefix            | string | Yes      | The name of the subet.                       |
-| routeTableName           | string | No       | The name of the routeTable to use.           |
-| networkSecurityGroupName | string | No       | The name of the NetworkSecurityGroup to use. |
+| Name                                  | Type   | Required | Value                                                                                                                                          |
+| ------------------------------------- | ------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| addressPrefix                         | string | Yes      | The name of the subet.                                                                                                                         |
+| routeTableName                        | string | No       | Optional. The name of the routeTable to use.                                                                                                   |
+| networkSecurityGroupResourceGroupName | string | no       | Optional. The resource group name where the NSG is located if it is not in the same resource group as the VNET. Default: Same RG name as VNET. |
+| networkSecurityGroupName              | string | No       | Optional. The name of the NetworkSecurityGroup to use.                                                                                         |
 
 ### dnsServers Object
 
@@ -113,3 +115,4 @@ This template is used to deploy [virtual networks](https://docs.microsoft.com/en
 | 20190205 |                                                                                    | Transformed the template to be resourcegroup deployed rather than subscription level deployed.                             |
 | 20190313 |                                                                                    | Adding support for subnet NSG as an option.                                                                                |
 | 20190516 | [20190516](https://github.com/canada-ca-azure-templates/vnet-subnet/tree/20190516) | Update documentation                                                                                                       |
+| 20190516 | [20190610](https://github.com/canada-ca-azure-templates/vnet-subnet/tree/20190610) | Add support for optional NSG Resource Group name if not located in same RG as VNET                                         |

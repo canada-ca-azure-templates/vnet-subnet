@@ -27,8 +27,24 @@
                         }
                     }
                 },
+                "getResourceGroupID": {
+                    "parameters": [
+                        {
+                            "name": "ResourceGroupName",
+                            "type": "string"
+                        }
+                    ],
+                    "output": {
+                        "type": "string",
+                        "value": "[concat(subscription().id, '/resourceGroups/', parameters('ResourceGroupName'))]"
+                    }
+                },
                 "getNSGid": {
                     "parameters": [
+                        {
+                            "name": "NSGResourceGroupID",
+                            "type": "string"
+                        },
                         {
                             "name": "NSGName",
                             "type": "string"
@@ -37,7 +53,7 @@
                     "output": {
                         "type": "object",
                         "value": {
-                            "id": "[concat(resourceGroup().id, '/providers/Microsoft.Network/networkSecurityGroups/', parameters('NSGName'))]"
+                            "id": "[concat(parameters('NSGResourceGroupID'), '/providers/Microsoft.Network/networkSecurityGroups/', parameters('NSGName'))]"
                         }
                     }
                 }
@@ -65,7 +81,7 @@
                             "properties": {
                                 "addressPrefix": "[variables('subnets')[copyIndex('subnets')].properties.addressPrefix]",
                                 "routeTable": "[if(contains(variables('subnets')[copyIndex('subnets')].properties, 'routeTableName'), pspc.getRouteTableid(variables('subnets')[copyIndex('subnets')].properties.routeTableName), json('null'))]",
-                                "networkSecurityGroup": "[if(contains(variables('subnets')[copyIndex('subnets')].properties, 'networkSecurityGroupName'), pspc.getNSGid(variables('subnets')[copyIndex('subnets')].properties.networkSecurityGroupName), json('null'))]"
+                                "networkSecurityGroup": "[if(contains(variables('subnets')[copyIndex('subnets')].properties, 'networkSecurityGroupName'), pspc.getNSGid(if(contains(variables('subnets')[copyIndex('subnets')].properties, 'networkSecurityGroupResourceGroupName'), pspc.getResourceGroupID(variables('subnets')[copyIndex('subnets')].properties.networkSecurityGroupResourceGroupName), resourceGroup().id), variables('subnets')[copyIndex('subnets')].properties.networkSecurityGroupName), json('null'))]"
                             }
                         }
                     }

@@ -5,7 +5,7 @@
         "vnetArray": {
             "value": [
                 {
-                    "name": "PwS2-validate-vnet-subnet-VNET",
+                    "name": "PwS2-validate-vnet1-VNET",
                     "resourceGroup": "PwS2-validate-vnet-subnet-RG",
                     "addressPrefixes": [
                         "10.96.96.0/24"
@@ -20,7 +20,8 @@
                         {
                             "name": "test1",
                             "properties": {
-                                "addressPrefix": "10.96.96.0/26"
+                                "addressPrefix": "10.96.96.0/26",
+                                "routeTableName": "test1-RT"
                             }
                         },
                         {
@@ -41,7 +42,7 @@
                     }
                 },
                 {
-                    "name": "PwS2-validate-vnet-subnet2-VNET",
+                    "name": "PwS2-validate-vnet2-VNET",
                     "resourceGroup": "PwS2-validate-vnet-subnet-RG",
                     "addressPrefixes": [
                         "10.96.97.0/24"
@@ -51,7 +52,8 @@
                             "name": "test1",
                             "properties": {
                                 "addressPrefix": "10.96.97.0/25",
-                                "routeTableName": "test1-RT"
+                                "networkSecurityGroupResourceGroupName": "PwS2-validate-vnet-subnet-RG",
+                                "networkSecurityGroupName": "test1-other-NSG"
                             }
                         }
                     ],
